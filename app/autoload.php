@@ -42,11 +42,3 @@ $vendorAutoload = (
     }
 )();
 
-if ($vendorAutoload === null) {
-    throw new \Exception(
-        'Vendor autoload is not found. Please run \'composer install\' under application root directory.'
-    );
-}
-
-$composerAutoloader = include $vendorAutoload;
-AutoloaderRegistry::registerAutoloader(new ClassLoaderWrapper($composerAutoloader));
