@@ -1,26 +1,40 @@
 <?php
 abstract class Car {
-  public $name;
-  public function __construct($name) {
-    $this->name = $name;
+  public static function initial($class)
+  {
+      return new $class();
   }
+
+  abstract public function run();
+
   abstract public function intro(); 
 }
 
 class Audi extends Car {
+  public function run()
+    {
+        echo 'Class Audi run.';
+    }
+
   public function intro() {
-    return "Choose German quality! I'm an $this->name!"; 
+    return "Choose German quality! I'm an Audi!"; 
   }
 }
 
 class Volvo extends Car {
+  public function run()
+    {
+        echo 'Class Volvo run.';
+    }
   public function intro() {
-    return "Proud to be Swedish! I'm a $this->name!"; 
+    return "Proud to be Swedish! I'm a Volvo!"; 
   }
 }
 
-$audi = new audi("Audi");
+$audi = Car::initial('Audi');
+$audi->run();
 echo $audi->intro();
 
-$volvo = new volvo("Volvo");
+$volvo = Car::initial('Volvo');
+$volvo->run();
 echo $volvo->intro();
